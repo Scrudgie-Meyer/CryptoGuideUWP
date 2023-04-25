@@ -1,0 +1,32 @@
+﻿<Page
+    x:Class="CryptoGuideUWP.View.Currencies"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:model="using:CryptoGuideUWP.Model"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <ListView x:Name="Cryptos" Grid.ColumnSpan="6" Grid.Row="1" HorizontalContentAlignment="Stretch">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <Grid Background="LightBlue" HorizontalAlignment="Stretch">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50*"/>
+                        <ColumnDefinition Width="200*"/>
+                        <ColumnDefinition Width="200*"/>
+                        <ColumnDefinition Width="200*"/>
+                        <ColumnDefinition Width="200*"/>
+                        <ColumnDefinition Width="200*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="{Binding rank}" Grid.Column="0" Margin="5" />
+                    <TextBlock Text="{Binding symbol}" Grid.Column="1" Margin="5" />
+                    <TextBlock Text="{Binding name}" Grid.Column="2" Margin="5" />
+                    <TextBlock Text="{Binding priceUSD}" Grid.Column="3" Margin="5" />
+                    <TextBlock Text="{Binding volumeUsd24Hr}" Grid.Column="4" Margin="5" />
+                    <TextBlock Text="{Binding marketCapUsd}" Grid.Column="5" Margin="5" />
+                </Grid>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+</Page>
