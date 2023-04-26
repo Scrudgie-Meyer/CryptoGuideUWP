@@ -8,15 +8,14 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
-        <Border BorderBrush="LightBlue" BorderThickness="1" Margin="315,167,314,248" Background="LightBlue" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <Image Source="ms-appx:///Assets/convert.png" Margin="259,152,259,73" RenderTransformOrigin="0.487,-0.022" VerticalAlignment="Center" HorizontalAlignment="Center"/>
 
+    <Canvas Background="White">
+        <Border BorderBrush="CadetBlue" Background="LightBlue" BorderThickness="1" Width="647" Height="176" Canvas.Left="323" Canvas.Top="221" HorizontalAlignment="Center" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
+            <Image Source="ms-appx:///Assets/convert.png" Margin="53,87,54,20" Stretch="Uniform" />
         </Border>
-        <ComboBox x:Name="ComboBox1"  Margin="370,243,0,0" ItemsSource="{x:Bind currencies}" DisplayMemberPath="name" Height="56" Width="194" SelectionChanged="ComboBox1_SelectionChanged"/>
+        <ComboBox x:Name="ComboBox1" ItemsSource="{x:Bind currencies}" DisplayMemberPath="name" Height="56" Width="194" SelectionChanged="ComboBox1_SelectionChanged" Canvas.Left="388" Canvas.Top="243"/>
         <ComboBox x:Name="ComboBox2"  Margin="699,243,0,0" ItemsSource="{x:Bind currencies}" DisplayMemberPath="name" Height="56" Width="210" SelectionChanged="ComboBox2_SelectionChanged"/>
-        <TextBox x:Name="Input1" HorizontalAlignment="Left" Margin="388,360,0,0" TextWrapping="Wrap" Text="&#xD;&#xA;" VerticalAlignment="Top" Height="38" Width="158" TextChanged="Input1_TextChanged"/>
-        <TextBlock x:Name="Input2" HorizontalAlignment="Left" Margin="719,360,0,0" TextWrapping="Wrap" Text="&#xD;&#xA;" VerticalAlignment="Top" Height="39" Width="158"/>
-
-    </Grid>
+        <TextBox x:Name="Input1" HorizontalAlignment="Center" TextWrapping="Wrap" Text="&#xD;&#xA;" VerticalAlignment="Top" Height="38" Width="158" TextChanged="Input1_TextChanged" Canvas.Left="406" Canvas.Top="341"/>
+        <TextBlock x:Name="Input2" HorizontalAlignment="Left" TextWrapping="Wrap" Text="&#xD;&#xA;" VerticalAlignment="Top" Height="39" Width="158" Canvas.Left="728" Canvas.Top="341"/>
+    </Canvas>
 </Page>

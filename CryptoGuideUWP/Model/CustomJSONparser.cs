@@ -43,9 +43,9 @@ namespace CryptoGuideUWP.Model
                 }
             }
         }
-        public static List<CryptoPrice> GetCandlestick(string baseId, string qutoId)
+        public static List<CryptoPrice> GetChart(string id)
         {
-            string apiUrl = $"Http://api.coincap.io/v2/assets/bitcoin/history?interval=d1";
+            string apiUrl = $"https://api.coincap.io/v2/assets/{id}/history?interval=d1";
             using (var client = new HttpClient())
             {
                 // Set the headers and make the request

@@ -2,24 +2,27 @@
     x:Class="CryptoGuideUWP.View.CurrencyPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:liveCharts="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+    xmlns:charting="using:WinRTXamlToolkit.Controls.DataVisualization.Charting"
     xmlns:local="using:CryptoGuideUWP.Model"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
     <Grid>
+        <Grid>
+            <TextBlock x:Name="Name" HorizontalAlignment="Left" Margin="156,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Height="53" Width="163"/>
+            <TextBlock x:Name="Name2" HorizontalAlignment="Left" Margin="260,360,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Height="53" Width="163"/>
+            <TextBlock x:Name="Name3" HorizontalAlignment="Left" Margin="35,360,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Height="53" Width="163"/>
+            <Button x:Name="BuyButton" Content="Buy on Crypto.com" Margin="554,363,0,0"  Click="BuyButton_Click" VerticalAlignment="Top"  />
+            <Button x:Name="RefreshButton" Content="Refresh" Click="RefreshButton_Click" Margin="454,363,0,0" VerticalAlignment="Top"/>
+        </Grid>
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+        <charting:Chart x:Name="Chart" Margin="48,51,62,371">
+            <charting:LineSeries ItemsSource="{Binding MyData}" IndependentValueBinding="{Binding Date}"  DependentValueBinding="{Binding PriceUsd}" Margin="0,-25,-99,0"/>
+        </charting:Chart>
 
 
-
-        <TextBlock x:Name="Name" HorizontalAlignment="Left" Margin="74,45,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Height="53" Width="163"/>
-        <Button x:Name="BuyButton" Content="Buy on Crypto.com" Margin="487,258,0,0" VerticalAlignment="Top" Height="53" Width="163" Click="BuyButton_Click" Grid.RowSpan="2"/>
-        <Button x:Name="RefreshButton" Content="Refresh" Click="RefreshButton_Click" Margin="235,263,0,0" VerticalAlignment="Top" Grid.RowSpan="2"/>
 
     </Grid>
 

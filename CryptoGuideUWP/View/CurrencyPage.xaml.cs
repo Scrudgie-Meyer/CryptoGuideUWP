@@ -1,12 +1,11 @@
 ﻿using CryptoGuideUWP.Model;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
-using LiveCharts.Wpf.Components;
+using Windows.UI.Xaml.Data;
+using WinRTXamlToolkit.Controls.DataVisualization.Charting;
 
 namespace CryptoGuideUWP.View
 {
@@ -16,6 +15,14 @@ namespace CryptoGuideUWP.View
         public CurrencyPage()
         {
             this.InitializeComponent();
+        }
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            currency = e.Parameter as Currency;
+            Name.Text = currency.name + " " + currency.symbol;
+            Name2.Text ="Current value USD: "+Convert.ToString(currency.priceUSD);
+            Name3.Text = "Market cap value USD: " + Convert.ToString(currency.marketCapUsd);
             RefreshChart();
         }
 
@@ -26,25 +33,37 @@ namespace CryptoGuideUWP.View
 
         private void RefreshChart()
         {
-            List<CryptoPrice> data = new List<CryptoPrice>();
+            List<CryptoPrice> data = CustomJSONparser.GetChart(currency.id);
+            List<CryptoPrice> newData = new List<CryptoPrice>();
+
+            int interval = data.Count / 10; 
+            for (int i = 0; i < data.Count; i += interval)
+            {
+                newData.Add(data[i]);
+            }
+
             // Clear any existing data points from the chart
             Chart.Series.Clear();
 
-            // Create a new line series and bind it to the data list
             LineSeries series = new LineSeries();
-            series.ItemsSource = data;
-            series.
-            series.IndependentValuePath = "Date";
-            series.DependentValuePath = "PriceUsd";
+            series.ItemsSource = newData;
 
 
-        }
-    
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            base.OnNavigatedTo(e);
-            currency=e.Parameter as Currency;
-            Name.Text = currency.name + " " + currency.symbol;
+            var dateBinding = new Binding()
+            {
+                Path = new PropertyPath("date")
+            };
+            series.IndependentValueBinding = dateBinding;
+
+
+            var priceBinding = new Binding()
+            {
+                Path = new PropertyPath("priceUsd")
+            };
+            series.DependentValueBinding = priceBinding;
+
+            Chart.Series.Add(series);
+
         }
         private async void BuyButton_Click(object sender, RoutedEventArgs e)
         {
