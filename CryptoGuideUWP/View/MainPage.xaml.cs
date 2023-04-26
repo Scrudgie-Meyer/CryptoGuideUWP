@@ -41,6 +41,7 @@ namespace CryptoGuideUWP
             else 
             {
                 NavigationViewItem item = args.SelectedItem as NavigationViewItem;
+
                 switch (item.Tag.ToString())
                 {
                     case "CurrenciesPage":
@@ -50,6 +51,7 @@ namespace CryptoGuideUWP
                         ContentFrame.Navigate(typeof(Converter));
                         break;
                 }
+
             }     
         }
     }

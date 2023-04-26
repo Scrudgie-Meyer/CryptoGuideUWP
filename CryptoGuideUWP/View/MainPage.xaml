@@ -14,7 +14,6 @@
                 <NavigationViewItem Icon="Home" Content="Currencies" Tag="CurrenciesPage"/>
                 <NavigationViewItem Icon="Calculator" Content="Convert" Tag="ConvertPage"/>
                 <!--<NavigationViewItem Icon="Setting" Content="Settings" Tag="SettingsPage"/>-->
-                <NavigationViewItem />
             </NavigationView.MenuItems>
             <ScrollViewer>
                 <Frame x:Name="ContentFrame"/>

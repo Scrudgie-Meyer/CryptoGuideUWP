@@ -7,26 +7,39 @@
     xmlns:model="using:CryptoGuideUWP.Model"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-    <ListView x:Name="Cryptos" Grid.ColumnSpan="6" Grid.Row="1" HorizontalContentAlignment="Stretch">
-        <ListView.ItemTemplate>
-            <DataTemplate>
-                <Grid Background="LightBlue" HorizontalAlignment="Stretch">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="50*"/>
-                        <ColumnDefinition Width="200*"/>
-                        <ColumnDefinition Width="200*"/>
-                        <ColumnDefinition Width="200*"/>
-                        <ColumnDefinition Width="200*"/>
-                        <ColumnDefinition Width="200*"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Text="{Binding rank}" Grid.Column="0" Margin="5" />
-                    <TextBlock Text="{Binding symbol}" Grid.Column="1" Margin="5" />
-                    <TextBlock Text="{Binding name}" Grid.Column="2" Margin="5" />
-                    <TextBlock Text="{Binding priceUSD}" Grid.Column="3" Margin="5" />
-                    <TextBlock Text="{Binding volumeUsd24Hr}" Grid.Column="4" Margin="5" />
-                    <TextBlock Text="{Binding marketCapUsd}" Grid.Column="5" Margin="5" />
-                </Grid>
-            </DataTemplate>
-        </ListView.ItemTemplate>
-    </ListView>
+    <Grid>
+        <TextBlock Text="Rank" Grid.Column="0" Margin="10,74,0,-64" FontWeight="Bold" />
+        <TextBlock Text="Symbol" Margin="78,74,-118,-64" FontWeight="Bold" />
+        <TextBlock Text="Name" Margin="270,74,-241,-64" FontWeight="Bold" />
+        <TextBlock Text="Price (USD)" Margin="450,74,-555,-68" FontWeight="Bold" />
+        <TextBlock Text="Volume (USD 24Hr)" Margin="650,74,-1076,-68" FontWeight="Bold" />
+        <TextBlock Text="Market Cap (USD)" Margin="850,74,-770,-72" FontWeight="Bold" />
+        <ListView x:Name="Cryptos" HorizontalContentAlignment="Stretch" ItemClick="Cryptos_ItemClick" IsItemClickEnabled="True" Margin="0,126,0,0">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition Width="200"/>
+                            <ColumnDefinition Width="200"/>
+                            <ColumnDefinition Width="200"/>
+                            <ColumnDefinition Width="200"/>
+                            <ColumnDefinition Width="200"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="{Binding rank}" Grid.Column="0" Margin="5" />
+                        <TextBlock Text="{Binding symbol}" Grid.Column="1" Margin="5" />
+                        <TextBlock Text="{Binding name}" Grid.Column="2" Margin="5" />
+                        <TextBlock Text="{Binding priceUSD}" Grid.Column="3" Margin="5" />
+                        <TextBlock Text="{Binding volumeUsd24Hr}" Grid.Column="4" Margin="5" />
+                        <TextBlock Text="{Binding marketCapUsd}" Grid.Column="5" Margin="5" />
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button x:Name="Rank"   Content="Increase" Margin="-2,18,0,0" VerticalAlignment="Top" Width="74" Click="Rank_Click"/>
+        <Button x:Name="Price" Content="Increase" Margin="450,18,0,0" VerticalAlignment="Top" Click="Price_Click"/>
+        <Button x:Name="Volume" Content="Increase" Margin="679,18,0,0" VerticalAlignment="Top" Click="Volume_Click"/>
+        <Button x:Name="Cap" Content="Increase" Margin="854,18,0,0" VerticalAlignment="Top" Click="Cap_Click"/>
+        <TextBox x:Name="SearchName" HorizontalAlignment="Left" Margin="176,18,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="133" TextChanged="SearchName_TextChanged"/>
+    </Grid>
 </Page>

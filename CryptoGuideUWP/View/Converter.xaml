@@ -9,14 +9,14 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <Border BorderBrush="LightBlue" BorderThickness="1" Margin="315,167,314,248" Background="LightBlue">
-            <Image Source="ms-appx:///Assets/convert.png" Margin="259,178,259,47"/>
+        <Border BorderBrush="LightBlue" BorderThickness="1" Margin="315,167,314,248" Background="LightBlue" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Image Source="ms-appx:///Assets/convert.png" Margin="259,152,259,73" RenderTransformOrigin="0.487,-0.022" VerticalAlignment="Center" HorizontalAlignment="Center"/>
 
         </Border>
-        <ComboBox x:Name="ComboBox1"  Margin="370,243,0,0" DisplayMemberPath="name" Height="56" Width="194"/>
-        <ComboBox x:Name="ComboBox2"  Margin="699,243,0,0" DisplayMemberPath="name" Height="56" Width="210"/>
-        <TextBox HorizontalAlignment="Left" Margin="388,360,0,0" TextWrapping="Wrap" Text="&#xD;&#xA;" VerticalAlignment="Top" Height="38" Width="158"/>
-        <TextBox HorizontalAlignment="Left" Margin="725,360,0,0" TextWrapping="Wrap" Text="&#xD;&#xA;" VerticalAlignment="Top" Height="38" Width="158"/>
+        <ComboBox x:Name="ComboBox1"  Margin="370,243,0,0" ItemsSource="{x:Bind currencies}" DisplayMemberPath="name" Height="56" Width="194" SelectionChanged="ComboBox1_SelectionChanged"/>
+        <ComboBox x:Name="ComboBox2"  Margin="699,243,0,0" ItemsSource="{x:Bind currencies}" DisplayMemberPath="name" Height="56" Width="210" SelectionChanged="ComboBox2_SelectionChanged"/>
+        <TextBox x:Name="Input1" HorizontalAlignment="Left" Margin="388,360,0,0" TextWrapping="Wrap" Text="&#xD;&#xA;" VerticalAlignment="Top" Height="38" Width="158" TextChanged="Input1_TextChanged"/>
+        <TextBlock x:Name="Input2" HorizontalAlignment="Left" Margin="719,360,0,0" TextWrapping="Wrap" Text="&#xD;&#xA;" VerticalAlignment="Top" Height="39" Width="158"/>
 
     </Grid>
 </Page>
