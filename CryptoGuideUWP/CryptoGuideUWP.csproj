@@ -120,6 +120,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\CryptoPrise.cs" />
+    <Compile Include="Model\ExchangeData.cs" />
     <Compile Include="View\Converter.xaml.cs">
       <DependentUpon>Converter.xaml</DependentUpon>
     </Compile>

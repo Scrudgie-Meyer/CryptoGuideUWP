@@ -12,9 +12,11 @@ namespace CryptoGuideUWP.View
     public sealed partial class CurrencyPage : Page
     {
         Currency currency = new Currency();
+        List<ExchangeData> markets = new List<ExchangeData>();
         public CurrencyPage()
         {
-            this.InitializeComponent();
+            InitializeComponent();
+
         }
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -23,6 +25,8 @@ namespace CryptoGuideUWP.View
             Name.Text = currency.name + " " + currency.symbol;
             Name2.Text ="Current value USD: "+Convert.ToString(currency.priceUSD);
             Name3.Text = "Market cap value USD: " + Convert.ToString(currency.marketCapUsd);
+            markets = CustomJSONparser.GetPrices(currency.id);
+            Markets.ItemsSource = markets;
             RefreshChart();
         }
 
@@ -70,6 +74,10 @@ namespace CryptoGuideUWP.View
             Uri uri = new Uri($"https://crypto.com/price/{currency.id}");
 
             await Windows.System.Launcher.LaunchUriAsync(uri);
+        }
+        private void Markets_ItemClick(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }

@@ -68,5 +68,30 @@ namespace CryptoGuideUWP.Model
             }
 
         }
+        public static List<ExchangeData> GetPrices(string id)
+        {
+            string apiUrl = $"https://api.coincap.io/v2/markets?baseId={id}&quoteSymbol=USD&limit=6";
+            using (var client = new HttpClient())
+            {
+                // Set the headers and make the request
+                client.DefaultRequestHeaders.Add("Accept", "application/json");
+                var response = client.GetAsync(apiUrl).Result;
+
+                // If the request was successful, parse the response
+                if (response.IsSuccessStatusCode)
+                {
+                    string json1 = response.Content.ReadAsStringAsync().Result;
+                    var jsonObject = JObject.Parse(json1);
+                    var result = jsonObject["data"].ToObject<List<ExchangeData>>();
+
+                    return result;
+                }
+                else
+                {
+                    throw new Exception($"Failed to get currencies from {apiUrl}. StatusCode: {response.StatusCode}");
+                }
+            }
+
+        }
     }
 }
