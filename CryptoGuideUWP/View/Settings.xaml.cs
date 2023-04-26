@@ -15,16 +15,16 @@ namespace CryptoGuideUWP.View
         }
         private void ToggleSwitch_Toggled(object sender, RoutedEventArgs e)
         {
-            if (Application.Current.RequestedTheme == ApplicationTheme.Dark)
-            {
-                // Перемикач встановлено на вимкнено, тому встановлюємо світлу тему
-                Application.Current.RequestedTheme = ApplicationTheme.Light;
-            }
-            else
-            {
-                // Перемикач встановлено на увімкнено, тому встановлюємо темну тему
-                Application.Current.RequestedTheme = ApplicationTheme.Dark;
-            }
+            //if (Application.Current.RequestedTheme == ApplicationTheme.Dark)
+            //{
+            //    // Перемикач встановлено на вимкнено, тому встановлюємо світлу тему
+            //    Application.Current.RequestedTheme = ApplicationTheme.Light;
+            //}
+            //else
+            //{
+            //    // Перемикач встановлено на увімкнено, тому встановлюємо темну тему
+            //    Application.Current.RequestedTheme = ApplicationTheme.Dark;
+            //}
         }
     }
 }

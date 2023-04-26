@@ -21,7 +21,12 @@
         <charting:Chart x:Name="Chart" Margin="48,51,62,371">
             <charting:LineSeries ItemsSource="{Binding MyData}" IndependentValueBinding="{Binding Date}"  DependentValueBinding="{Binding PriceUsd}" Margin="0,-25,-99,0"/>
         </charting:Chart>
-        <ListView x:Name="Markets" HorizontalContentAlignment="Stretch" ItemClick="Markets_ItemClick" IsItemClickEnabled="True" Margin="48,452,35,0">
+        <TextBlock Text="MarketId" Grid.Column="0" Margin="28,439,-38,-429" FontWeight="Bold" />
+        <TextBlock Text="ToCurrency" Margin="200,439,-265,-429" FontWeight="Bold" />
+        <TextBlock Text="Price (USD)" Margin="435,439,-540,-433" FontWeight="Bold" />
+        <TextBlock Text="Volume (USD 24Hr)" Margin="640,439,-1066,-433" FontWeight="Bold" />
+        <TextBlock Text="Trades count (USD)" Margin="908,439,-828,-437" FontWeight="Bold" />
+        <ListView x:Name="Markets" HorizontalContentAlignment="Stretch" ItemClick="Markets_ItemClick" IsItemClickEnabled="True" Margin="0,482,0,0">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -29,14 +34,14 @@
                             <ColumnDefinition Width="200"/>
                             <ColumnDefinition Width="200"/>
                             <ColumnDefinition Width="200"/>
-                            <ColumnDefinition Width="200"/>
-                            <ColumnDefinition Width="200"/>
+                            <ColumnDefinition Width="300"/>
+                            <ColumnDefinition Width="300"/>
                         </Grid.ColumnDefinitions>
                         <TextBlock Text="{Binding exchangeId}" Grid.Column="0" Margin="5" />
-                        <TextBlock Text="{Binding quoteSymbol}" Grid.Column="2" Margin="5" />
-                        <TextBlock Text="{Binding priceQuote}" Grid.Column="3" Margin="5" />
-                        <TextBlock Text="{Binding volumeUsd24Hr}" Grid.Column="4" Margin="5" />
-                        <TextBlock Text="{Binding tradesCount24Hr}" Grid.Column="5" Margin="5" />
+                        <TextBlock Text="{Binding quoteSymbol}" Grid.Column="1" Margin="5" />
+                        <TextBlock Text="{Binding priceQuote}" Grid.Column="2" Margin="5" />
+                        <TextBlock Text="{Binding volumeUsd24Hr}" Grid.Column="3" Margin="5" />
+                        <TextBlock Text="{Binding tradesCount24Hr}" Grid.Column="4" Margin="5" />
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
