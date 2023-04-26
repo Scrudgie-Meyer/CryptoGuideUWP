@@ -7,9 +7,6 @@ using Windows.UI.Xaml.Controls;
 
 namespace CryptoGuideUWP.View
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class Settings : Page
     {
         public Settings()
@@ -21,7 +18,7 @@ namespace CryptoGuideUWP.View
             if (Application.Current.RequestedTheme == ApplicationTheme.Dark)
             {
                 // Перемикач встановлено на вимкнено, тому встановлюємо світлу тему
-                Application.Current.RequestedTheme = ApplicationTheme.Dark;
+                Application.Current.RequestedTheme = ApplicationTheme.Light;
             }
             else
             {
