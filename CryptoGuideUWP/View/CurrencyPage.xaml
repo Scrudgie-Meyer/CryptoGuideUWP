@@ -26,7 +26,7 @@
         <TextBlock Text="Price (USD)" Margin="435,439,-540,-433" FontWeight="Bold" />
         <TextBlock Text="Volume (USD 24Hr)" Margin="640,439,-1066,-433" FontWeight="Bold" />
         <TextBlock Text="Trades count (USD)" Margin="908,439,-828,-437" FontWeight="Bold" />
-        <ListView x:Name="Markets" HorizontalContentAlignment="Stretch" ItemClick="Markets_ItemClick" IsItemClickEnabled="True" Margin="0,482,0,0">
+        <ListView x:Name="Markets" HorizontalContentAlignment="Stretch" IsItemClickEnabled="True" Margin="0,482,0,0">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid>

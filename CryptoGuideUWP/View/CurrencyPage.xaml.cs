@@ -75,12 +75,5 @@ namespace CryptoGuideUWP.View
 
             await Windows.System.Launcher.LaunchUriAsync(uri);
         }
-        private async void Markets_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            var market = (ExchangeData)e.ClickedItem;
-            Uri uri = new Uri($"https://crypto.com/price/{currency.id}");
-
-            await Windows.System.Launcher.LaunchUriAsync(uri);
-        }
     }
 }
