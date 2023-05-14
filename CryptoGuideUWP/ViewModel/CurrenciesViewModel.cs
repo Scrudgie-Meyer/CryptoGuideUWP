@@ -2,30 +2,34 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Windows.UI.Xaml.Controls;
-
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace CryptoGuideUWP.View
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class Currencies : Page
     {
-        private List<Currency> currencies = new List<Currency>();  
+        private List<CurrencyTableObject> currencies = new List<CurrencyTableObject>();
         public Currencies()
         {
             InitializeComponent();
-            currencies=CustomJSONparser.GetCurrencies();          
-            Cryptos.ItemsSource = currencies;
+            OnRefresh();
+        }
+
+        private async void OnRefresh()
+        {
+            while(true)
+            {
+                currencies = ResponseParser.CurrencyTableData();
+                Cryptos.ItemsSource = currencies;
+                await Task.Delay(30000);
+            }
         }
         private void Cryptos_ItemClick(object sender, ItemClickEventArgs e)
         {
-            var currency = (Currency)e.ClickedItem;
+            var currency = (CurrencyTableObject)e.ClickedItem;
             Frame.Navigate(typeof(CurrencyPage), currency);
         }
-
         private void Rank_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             if (Rank.Content.ToString() == "Increase")
@@ -91,13 +95,13 @@ namespace CryptoGuideUWP.View
             string searchText = SearchName.Text.Trim();
             if (!string.IsNullOrEmpty(searchText))
             {
-                List<Currency> filteredCurrencies = currencies.Where(c => c.name.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0).ToList();
+                List<CurrencyTableObject> filteredCurrencies = currencies.Where(c => c.name.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0).ToList();
                 Cryptos.ItemsSource = filteredCurrencies;
             }
             else
             {
                 Cryptos.ItemsSource = currencies;
             }
-        }
+        } 
     }
 }

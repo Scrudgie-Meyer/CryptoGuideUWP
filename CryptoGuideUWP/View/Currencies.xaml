@@ -36,10 +36,10 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <Button x:Name="Rank"   Content="Increase" Margin="-2,18,0,0" VerticalAlignment="Top" Width="74" Click="Rank_Click"/>
-        <Button x:Name="Price" Content="Increase" Margin="450,18,0,0" VerticalAlignment="Top" Click="Price_Click"/>
-        <Button x:Name="Volume" Content="Increase" Margin="679,18,0,0" VerticalAlignment="Top" Click="Volume_Click"/>
-        <Button x:Name="Cap" Content="Increase" Margin="854,18,0,0" VerticalAlignment="Top" Click="Cap_Click"/>
+        <Button x:Name="Rank"   Content="Decrease" Margin="-2,18,0,0" VerticalAlignment="Top" Width="82" Click="Rank_Click"/>
+        <Button x:Name="Price" Content="Decrease" Margin="450,18,0,0" VerticalAlignment="Top" Click="Price_Click"/>
+        <Button x:Name="Volume" Content="Decrease" Margin="679,18,0,0" VerticalAlignment="Top" Click="Volume_Click"/>
+        <Button x:Name="Cap" Content="Decrease" Margin="854,18,0,0" VerticalAlignment="Top" Click="Cap_Click"/>
         <TextBox x:Name="SearchName" HorizontalAlignment="Left" Margin="176,18,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="133" TextChanged="SearchName_TextChanged"/>
     </Grid>
 </Page>

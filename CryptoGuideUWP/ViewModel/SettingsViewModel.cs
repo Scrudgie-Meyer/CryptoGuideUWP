@@ -1,10 +1,6 @@
-﻿using Windows.Storage;
-using Windows.UI.ViewManagement;
+﻿using CryptoGuideUWP.Model;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
-
 namespace CryptoGuideUWP.View
 {
     public sealed partial class Settings : Page
@@ -13,16 +9,16 @@ namespace CryptoGuideUWP.View
         {
             InitializeComponent();
         }
+
+        //У останніх версіях Windows 10 не підтримується, через можливість встановлення теми за замовчуванням у налаштуваннях
         private void ToggleSwitch_Toggled(object sender, RoutedEventArgs e)
         {
             //if (Application.Current.RequestedTheme == ApplicationTheme.Dark)
             //{
-            //    // Перемикач встановлено на вимкнено, тому встановлюємо світлу тему
             //    Application.Current.RequestedTheme = ApplicationTheme.Light;
             //}
             //else
             //{
-            //    // Перемикач встановлено на увімкнено, тому встановлюємо темну тему
             //    Application.Current.RequestedTheme = ApplicationTheme.Dark;
             //}
         }

@@ -11,42 +11,50 @@ namespace CryptoGuideUWP.View
 {
     public sealed partial class CurrencyPage : Page
     {
-        Currency currency = new Currency();
-        List<ExchangeData> markets = new List<ExchangeData>();
+        CurrencyTableObject currency = new CurrencyTableObject();
+        List<CurrencyMarketsObject> markets = new List<CurrencyMarketsObject>();
+
+
         public CurrencyPage()
         {
             InitializeComponent();
-
         }
+
+
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            currency = e.Parameter as Currency;
+            currency = e.Parameter as CurrencyTableObject;
+
             Name.Text = currency.name + " " + currency.symbol;
-            Name2.Text ="Current value USD: "+Convert.ToString(currency.priceUSD);
+            Name2.Text = "Current value USD: " + Convert.ToString(currency.priceUSD);
             Name3.Text = "Market cap value USD: " + Convert.ToString(currency.marketCapUsd);
-            markets = CustomJSONparser.GetPrices(currency.id);
+            markets = ResponseParser.CurrencyObjectData(currency.id);
             Markets.ItemsSource = markets;
+
             RefreshChart();
         }
+
 
         private void RefreshButton_Click(object sender, RoutedEventArgs e)
         {
             RefreshChart();
         }
 
+
         private void RefreshChart()
         {
-            List<CryptoPrice> data = CustomJSONparser.GetChart(currency.id);
-            List<CryptoPrice> newData = new List<CryptoPrice>();
+            List<CurrencyChartObject> data = ResponseParser.CurrencyChartData(currency.id);
+            List<CurrencyChartObject> newData = new List<CurrencyChartObject>();
 
-            int interval = data.Count / 10; 
+
+            int interval = data.Count / 10;
             for (int i = 0; i < data.Count; i += interval)
             {
                 newData.Add(data[i]);
             }
 
-            // Clear any existing data points from the chart
+
             Chart.Series.Clear();
 
             LineSeries series = new LineSeries();
@@ -66,13 +74,14 @@ namespace CryptoGuideUWP.View
             };
             series.DependentValueBinding = priceBinding;
 
-            Chart.Series.Add(series);
 
+            Chart.Series.Add(series);
         }
+
+
         private async void BuyButton_Click(object sender, RoutedEventArgs e)
         {
             Uri uri = new Uri($"https://crypto.com/price/{currency.id}");
-
             await Windows.System.Launcher.LaunchUriAsync(uri);
         }
     }
